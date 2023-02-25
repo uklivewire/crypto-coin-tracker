@@ -3,6 +3,18 @@ import { create } from 'zustand';
 
 const homeStore = create((set) => ({
     coins: [],
+    qyery: '',
+
+    setQuery: (e) => {
+        set({query: e.target.value})
+        homeStore.getState().searchCoins()
+    },
+
+    searchCoins: async () => {
+        const {query} = homeStore.getState()
+        const res = await axios.get('https://api.coingecko.com/api/v3/search?query=${query}')
+        console.log(res)
+    },
 
     fetchCoins: async () => {
     const res = await axios.get('https://api.coingecko.com/api/v3/search/trending')
