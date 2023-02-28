@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import showStore from "../stores/showStore";
+import Header from "../components/Header";
 
 import {
   AreaChart,
@@ -9,7 +10,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer,
 } from "recharts";
 
 const data = [
@@ -69,6 +69,7 @@ export default function Show() {
 
   return (
     <div>
+      <Header back />
       <header>
         <img src={store.data.image.large} alt="" />
         <h2> {store.data.name}({store.data.symbol}) </h2>

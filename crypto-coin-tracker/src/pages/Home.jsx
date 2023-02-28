@@ -1,53 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import homeStore from '../stores/homeStore';
-import Header from '../components/Header';
-
+import React from "react";
+import { Link } from "react-router-dom";
+import homeStore from "../stores/homeStore";
+import Header from "../components/Header";
+import ListItem from "../components/ListItem";
 
 export default function Home() {
-  const store = homeStore()
+  const store = homeStore();
 
-  React.useEffect (() => {
-    store.fetchCoins()
-  }, [])  
+  React.useEffect(() => {
+    store.fetchCoins();
+  }, []);
 
   return (
     <div>
-        <Header />
-        <input type="text" value={store.query} onChange={store.setQuery} />
-        {store.coins.map(coin => {
-            return (
-                <div key={coin.id}>
-                    <Link to={`/${coin.id}`}>
-                       {coin.name} 
-                    </Link>
-                </div>
-            )
-        })}
+      <Header />
+      <header className="home-search">
+        <div className="width">
+          <h2>Search for a coin</h2>
+          <input type="text" value={store.query} onChange={store.setQuery} />
+        </div>
+      </header>
+      <div className="home-cryptos">
+        <div className="width">
+          <h2>Trending Coins</h2>
+          {store.coins.map((coin) => {
+            return <ListItem key={coin.id} coin={coin} />;
+          })}
+        </div>
+      </div>
     </div>
-  )
+  );
 }
-
-
-// export default function Home() {
-//     const store = homeStore()
-
-//     React.useEffect(() => {
-//        store.fetchCoins() 
-//     }, [])
-  
-//     return (
-//     <div>
-//         <input type="text" value={store.query} onChange={store.setQuery}/>
-//         {store.coins.map(coin => {
-//             return (
-//                 <div key={coin.id}>
-//                     <Link to={`/${coin.id}`}>
-//                         {coin.name}
-//                     </Link>
-//                 </div>
-//             )
-//         })}
-//     </div>
-//   )
-// }
