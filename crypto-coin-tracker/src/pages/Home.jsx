@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import homeStore from "../stores/homeStore";
 import Header from "../components/Header";
 import ListItem from "../components/ListItem";
@@ -23,9 +23,11 @@ export default function Home() {
       <div className="home-cryptos">
         <div className="width">
           <h2>Trending Coins</h2>
+          <div className="home-cryptos-list">
           {store.coins.map((coin) => {
             return <ListItem key={coin.id} coin={coin} />;
           })}
+          </div>
         </div>
       </div>
     </div>
