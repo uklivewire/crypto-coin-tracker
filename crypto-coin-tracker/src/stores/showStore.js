@@ -4,6 +4,11 @@ import { create } from 'zustand';
 const showStore = create((set) => ({
     graphData: [],
     data: null,
+
+    reset: () => {
+        set({graphData: [], data: null});
+    },
+
     fetchData: async (id) => {
         const [graphRes, dataRes] = await Promise.all([
             axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=gbp&days=121`),
