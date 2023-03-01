@@ -9,7 +9,7 @@ export default function Home() {
   const store = homeStore();
 
   React.useEffect(() => {
-    store.fetchCoins();
+    if (store.trending.length === 0 )store.fetchCoins();
   }, []);
 
   return (

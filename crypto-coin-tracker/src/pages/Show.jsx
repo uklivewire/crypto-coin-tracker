@@ -70,11 +70,12 @@ export default function Show() {
     }
   }, []);
 
-  if (!store.data) return <></>;
-
   return (
     <div>
       <Header back />
+    {store.data && <>
+    
+   
       <header className="show-header">
         <img src={store.data.image.large} alt="" />
         <h2>
@@ -143,6 +144,7 @@ export default function Show() {
           </div>
         </div>
       </div>
+      </>}  
     </div>
   );
 }
